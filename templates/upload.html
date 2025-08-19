@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Easy File Transfer</title>
+  <link href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #eef3f7;
+      padding: 30px;
+      max-width: 600px;
+      margin: auto;
+      text-align: center;
+    }
+    .logo-container {
+      background: #ffffff;
+      border-radius: 50%;
+      padding: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+    h2 {
+      font-size: 28px;
+      color: #333;
+      margin-bottom: 30px;
+    }
+    .dropzone {
+      border: 2px dashed #4caf50;
+      padding: 40px;
+      background: #ffffff;
+      border-radius: 10px;
+      transition: box-shadow 0.3s ease;
+    }
+    .dropzone:hover {
+      box-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+    }
+    .reload-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 25px;
+      padding: 10px 20px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+    .reload-btn:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="logo-container">
+    <img src="https://img.icons8.com/external-those-icons-flat-those-icons/96/external-iCloud-logos-and-brands-those-icons-flat-those-icons.png" alt="Cloud Logo" style="max-width: 80px;">
+  </div>
+
+  <h2>Easy File Transfer</h2>
+
+  <form action="/upload" class="dropzone" id="myDropzone"></form>
+
+  <button class="reload-btn" onclick="location.reload()">🔄 Reload</button>
+
+  <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+  <script>
+    Dropzone.options.myDropzone = {
+      maxFilesize: 2048, // MB
+      parallelUploads: 1,
+      uploadMultiple: false,
+      init: function() {
+        this.on("complete", function(file) {
+          console.log("Upload selesai:", file.name);
+        });
+      }
+    };
+  </script>
+</body>
+</html>
